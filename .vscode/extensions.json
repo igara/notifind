@@ -6,6 +6,8 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "stuartzhang.stylelint-stzhang",
-    "jpoissonnier.vscode-styled-components"
+    "jpoissonnier.vscode-styled-components",
+    "hbenl.vscode-test-explorer",
+    "rtbenfield.vscode-jest-test-adapter"
   ]
 }

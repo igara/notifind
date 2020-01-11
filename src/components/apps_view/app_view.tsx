@@ -22,7 +22,7 @@ export const AppView = (props: Props) => {
     {
       clicked: () => {
         storesContext.setSelectedAppIDState(props.app.id);
-        const notifications = getNotifications(props.app.id);
+        const notifications = getNotifications(props.app.id, "", "", "");
         storesContext.setNotificationsState(notifications);
       }
     },

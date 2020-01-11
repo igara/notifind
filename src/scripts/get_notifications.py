@@ -23,9 +23,9 @@ def get_notifications_json(search_app_id, search_title, search_sub_title, search
     """,
     [
       search_app_id,
-      search_title,
-      search_sub_title,
-      search_body,
+      '%' + search_title + '%',
+      '%' + search_sub_title + '%',
+      '%' + search_body + '%'
     ]
   )
 

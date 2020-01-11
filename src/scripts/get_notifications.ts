@@ -3,6 +3,7 @@ import { distPath } from "@src/utils/paths";
 import "@src/scripts/notifind_db.sqlite3";
 import "@src/scripts/notifind_db.py";
 import "@src/scripts/get_notifications.py";
+import { App } from "./get_apps";
 
 type NotificationJSON = {
   id: number;
@@ -25,9 +26,14 @@ export type Notification = {
 
 export type Notifications = Notification[];
 
-export const getNotifications = (appID: string | number): Notifications => {
+export const getNotifications = (
+  searchAppID: App["id"],
+  searchTitle: string,
+  searchSubTitle: string,
+  searchBody: string
+): Notifications => {
   const jsonString = execSync(
-    `(cd ${distPath} && PYTHONIOENCODING=utf-8 /usr/bin/python -c "import get_notifications; get_notifications.call('${appID}')")`
+    `(cd ${distPath} && PYTHONIOENCODING=utf-8 /usr/bin/python -c "import get_notifications; get_notifications.call('${searchAppID}, ${searchTitle}, ${searchSubTitle}, ${searchBody}')")`
   ).toString();
 
   return JSON.parse(jsonString).map((json: NotificationJSON) => {

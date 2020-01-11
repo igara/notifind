@@ -6,7 +6,6 @@
     { "language": "typescript", "autoFix": true },
     { "language": "typescriptreact", "autoFix": true }
   ],
-  "prettier.stylelintIntegration": true,
   "javascript.validate.enable": false,
   "javascript.format.enable": false,
   "editor.formatOnSave": true,
