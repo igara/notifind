@@ -1,0 +1,23 @@
+name: nodejs
+on: [push]
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: versions
+        run: |
+          sw_vers
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: install task
+        run: |
+          npm install
+      - name: test task
+        run: |
+          npm lint
+          npm test
+      - name: build task
+        run: npm run package
