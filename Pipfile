@@ -14,4 +14,5 @@ python_version = "2.7"
 [scripts]
 db_create = "/usr/bin/python -c 'from src.scripts import notifind_db; notifind_db.create()'"
 db_move = "mv notifind_db.sqlite3 src/scripts"
+test_install = "sudo /usr/bin/python -m pip install mock --upgrade --ignore-installed six"
 test = "/usr/bin/python -m unittest discover --start-directory ./tests/scripts"
