@@ -19,13 +19,11 @@
     "dist": true,
     "deploy": true
   },
-  "python.testing.unittestArgs": [
-    "-v",
-    "-s",
-    "./tests",
-    "-p",
-    "test_*.py"
+  "python.pythonPath": "/usr/bin/python",
+  "python.autoComplete.extraPaths": [
+    "/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python"
   ],
+  "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "test_*.py"],
   "python.testing.pytestEnabled": false,
   "python.testing.nosetestsEnabled": false,
   "python.testing.unittestEnabled": true
