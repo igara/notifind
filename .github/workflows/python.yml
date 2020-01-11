@@ -12,10 +12,13 @@ jobs:
           xcodebuild -version
           which python
           python -V
+      - name: get brew cache directory
+        id: brew-cache
+        run: echo "::set-output name=dir::$(brew --cache)/downloads"
       - name: brew cache
         uses: actions/cache@v1
         with:
-          path: ~/Library/Caches/Homebrew/downloads
+          path: ${{ steps.brew-cache.outputs.dir }}
           key: ${{ runner.os }}-${{ hashFiles('Brewfile') }}
       - name: pip cache
         uses: actions/cache@v1
