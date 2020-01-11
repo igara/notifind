@@ -3,7 +3,7 @@
 import json
 import notifind_db
 
-def get_notifications_json(search_app_id):
+def get_notifications_json(search_app_id, search_title, search_sub_title, search_body):
   connection = notifind_db.connect()
   cursor = connection.cursor()
   notifications = cursor.execute(
@@ -16,10 +16,16 @@ def get_notifications_json(search_app_id):
         date
       FROM record
       WHERE app_id = ?
+        AND title LIKE ?
+        AND sub_title LIKE ?
+        AND body LIKE ?
       ORDER BY date DESC;
     """,
     [
-      search_app_id
+      search_app_id,
+      search_title,
+      search_sub_title,
+      search_body,
     ]
   )
 
@@ -34,8 +40,8 @@ def get_notifications_json(search_app_id):
     res_j.append(notification_dic)
   return res_j
 
-def call(search_app_id):
-  d = get_notifications_json(search_app_id)
+def call(search_app_id, search_title, search_sub_title, search_body):
+  d = get_notifications_json(search_app_id, search_title, search_sub_title, search_body)
 
   json_string = json.dumps(d, indent=2, ensure_ascii=False)
   print json_string

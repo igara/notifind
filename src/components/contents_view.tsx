@@ -13,7 +13,7 @@ export const ContentsView = () => {
   React.useEffect(() => {
     setTimeout(() => {
       sync();
-      const apps = getApps(storesContext.searchWordState);
+      const apps = getApps(storesContext.searchIdentifierState);
       storesContext.setAppsState(apps);
     }, 10000);
   }, [storesContext.appsState]);

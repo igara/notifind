@@ -15,7 +15,7 @@ describe("Stores", () => {
       return (
         <>
           {JSON.stringify({
-            searchWordState: storesContext.searchWordState,
+            searchIdentifierState: storesContext.searchIdentifierState,
             appsState: storesContext.appsState
           })}
         </>
@@ -32,18 +32,18 @@ describe("Stores", () => {
     });
     expect(testWrapper.html()).toEqual(
       JSON.stringify({
-        searchWordState: "",
+        searchIdentifierState: "",
         appsState: []
       })
     );
   });
 
-  test("change searchWordState", () => {
-    const searchWordState = "hoge";
+  test("change searchIdentifierState", () => {
+    const searchIdentifierState = "hoge";
     const Test = () => {
       const storesContext = React.useContext(StoresContext);
-      storesContext.setSearchWordState(searchWordState);
-      return <>{storesContext.searchWordState}</>;
+      storesContext.setSearchIdentifierState(searchIdentifierState);
+      return <>{storesContext.searchIdentifierState}</>;
     };
 
     let testWrapper!: Enzyme.ReactWrapper;
@@ -54,7 +54,7 @@ describe("Stores", () => {
         </Stores>
       );
     });
-    expect(testWrapper.html()).toEqual(searchWordState);
+    expect(testWrapper.html()).toEqual(searchIdentifierState);
   });
 
   test("change appsState", () => {

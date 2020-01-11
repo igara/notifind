@@ -18,9 +18,9 @@ export type App = {
 
 export type Apps = App[];
 
-export const getApps = (searchWord: string): Apps => {
+export const getApps = (searchIdentifier: string): Apps => {
   const jsonString = execSync(
-    `(cd ${distPath} && PYTHONIOENCODING=utf-8 /usr/bin/python -c "import get_apps; get_apps.call('${searchWord}')")`
+    `(cd ${distPath} && PYTHONIOENCODING=utf-8 /usr/bin/python -c "import get_apps; get_apps.call('${searchIdentifier}')")`
   ).toString();
 
   return JSON.parse(jsonString).map((json: AppJSON) => ({

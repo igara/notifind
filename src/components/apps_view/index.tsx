@@ -17,15 +17,15 @@ export const AppsView = () => {
 
   const searchLineEditEventHandler = useEventHandler<QLineEditSignals>(
     {
-      textChanged: (searchWord: string) => {
-        storesContext.setSearchWordState(searchWord);
+      textChanged: (searchIdentifier: string) => {
+        storesContext.setSearchIdentifierState(searchIdentifier);
       },
       returnPressed: () => {
-        const apps = getApps(storesContext.searchWordState);
+        const apps = getApps(storesContext.searchIdentifierState);
         storesContext.setAppsState(apps);
       }
     },
-    [storesContext.searchWordState, storesContext.appsState]
+    [storesContext.searchIdentifierState, storesContext.appsState]
   );
 
   return (
@@ -33,7 +33,7 @@ export const AppsView = () => {
       <LineEdit
         placeholderText="対象のアプリケーション"
         on={searchLineEditEventHandler}
-        text={storesContext.searchWordState}
+        text={storesContext.searchIdentifierState}
       />
       <Text wordWrap={true}>
         入力しないでEnterを押した時は通知を許可した全アプリケーションの表示が行われます
