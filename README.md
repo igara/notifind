@@ -24,7 +24,7 @@ npm run package
 
 ```bash
 # Python
-pipenv run test_install
+sudo /usr/bin/python -m pip install mock --upgrade --ignore-installed six
 pipenv run test
 # TypeScript
 npm run lint
