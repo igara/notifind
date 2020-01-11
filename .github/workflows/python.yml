@@ -5,12 +5,13 @@ jobs:
   test:
     runs-on: macos-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v1
-        - run: sw_vers
-        - run: xcodebuild -version
-        - run: which python
-        - run: python -V
+      - uses: actions/checkout@v1
+      - name: versions
+        run: |
+          sw_vers
+          xcodebuild -version
+          which python
+          python -V
       - name: brew cache
         uses: actions/cache@v1
         with:
@@ -25,11 +26,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: install task
-        - run: brew install pipenv
-        - run: sudo easy_install pip
-        - run: which pip
-        - run: pip -V
-        - run: sudo pip install mock --upgrade --ignore-installed six
-        - run: sudo pip install pyobjc
+        run: |
+          brew install pipenv
+          sudo easy_install pip
+          which pip
+          pip -V
+          sudo pip install mock --upgrade --ignore-installed six
+          sudo pip install pyobjc
       - name: run test
         run: python -m unittest discover --start-directory ./tests/scripts
