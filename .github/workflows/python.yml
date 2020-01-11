@@ -6,6 +6,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
+      - run: sw_vers
+      - run: xcodebuild -version
       - run: which python
       - run: python -V
       - run: brew install pipenv
@@ -13,4 +15,5 @@ jobs:
       - run: which pip
       - run: pip -V
       - run: sudo pip install mock --upgrade --ignore-installed six
+      - run: sudo pip install pyobjc
       - run: python -m unittest discover --start-directory ./tests/scripts
