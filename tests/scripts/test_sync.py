@@ -4,6 +4,7 @@ import unittest
 import mock
 from src.scripts import sync
 import sqlite3
+import subprocess
 
 class SyncTest(unittest.TestCase):
   def test_call(self):
@@ -18,6 +19,7 @@ class SyncTest(unittest.TestCase):
         mock_notification_center_db_connect.return_value = notification_center_db_connection
 
         sync.call()
+        subprocess.call(["git", "checkout", "HEAD", "--", "tests/scripts/notifind_db.sqlite3"])
 
 if __name__ == '__main__':
   unittest.main()
