@@ -24,6 +24,10 @@ jobs:
       - name: install task
         run: |
           npm install
+      - name: create db
+        run: |
+          python -c 'from src.scripts import notifind_db; notifind_db.create()'
+          mv notifind_db.sqlite3 src/scripts
       - name: test task
         run: |
           npm run lint
