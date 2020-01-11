@@ -12,7 +12,7 @@ class GetNotificationsTest(unittest.TestCase):
       notifind_db_connection.row_factory = sqlite3.Row
       mock_notifind_db_connect.return_value = notifind_db_connection
 
-      notification = get_notifications.get_notifications_json(99)
+      notification = get_notifications.get_notifications_json(99, "", "", "")
       self.assertEqual(len(notification), 0)
 
   def test_get_notifications_json_1_count(self):
@@ -21,7 +21,7 @@ class GetNotificationsTest(unittest.TestCase):
       notifind_db_connection.row_factory = sqlite3.Row
       mock_notifind_db_connect.return_value = notifind_db_connection
 
-      notification = get_notifications.get_notifications_json(1)
+      notification = get_notifications.get_notifications_json(1, "", "", "")
       self.assertEqual(len(notification), 1)
       self.assertEqual(notification[0]["id"], 1)
       self.assertEqual(notification[0]["body"], u'\u26d4\ufe0f 5 of 21 tests failed')
