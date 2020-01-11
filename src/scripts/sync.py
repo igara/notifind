@@ -1,18 +1,12 @@
 # -*- coding: utf-8 -*-
 # /usr/bin/python (macOS system python)
-import os
-import sys
-import sqlite3
-import tempfile
 import json
 import notifind_db
 import notification_center_db
-import datetime
 import Foundation
 import codecs
 
 def parse_req(req):
-  # reqをparseしtitleとbodyのみ取得する
   res = {}
   for x in str(req).split(';\n'):
     if 'body' in x or 'titl' in x or 'subt' in x:
@@ -20,7 +14,7 @@ def parse_req(req):
       res[d[0]] = d[1].replace('"','')
   return res
 
-def insertApps(notification_center_db_cursor, notifind_db_cursor, notifind_db_connection):
+def insert_apps(notification_center_db_cursor, notifind_db_cursor, notifind_db_connection):
   app_rows = notification_center_db_cursor.execute("""
     SELECT
       app_id,
@@ -42,7 +36,7 @@ def insertApps(notification_center_db_cursor, notifind_db_cursor, notifind_db_co
     )
     notifind_db_connection.commit()
 
-def insertRecords(notification_center_db_cursor, notifind_db_cursor, notifind_db_connection):
+def insert_records(notification_center_db_cursor, notifind_db_cursor, notifind_db_connection):
   record_rows = notification_center_db_cursor.execute("""
     SELECT
       app_id,
@@ -80,7 +74,7 @@ def insertRecords(notification_center_db_cursor, notifind_db_cursor, notifind_db
         record_dic['app'] = value
     if 'date' not in record_dic:
       record_dic['date'] = '0000-01-01 00:00:00 +0000'
-    
+
     notifind_db_cursor.execute(
       """
       INSERT OR IGNORE INTO record
@@ -112,8 +106,8 @@ def call():
   notification_center_db_connection = notification_center_db.connect()
   notification_center_db_cursor = notification_center_db_connection.cursor()
 
-  insertApps(notification_center_db_cursor, notifind_db_cursor, notifind_db_connection)
-  insertRecords(notification_center_db_cursor, notifind_db_cursor, notifind_db_connection)
+  insert_apps(notification_center_db_cursor, notifind_db_cursor, notifind_db_connection)
+  insert_records(notification_center_db_cursor, notifind_db_cursor, notifind_db_connection)
 
   message_dic = {}
   message_dic['sync'] = 'ok'

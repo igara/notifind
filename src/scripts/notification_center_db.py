@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # /usr/bin/python (macOS system python)
 import os
-import sys
 import sqlite3
 import tempfile
 
