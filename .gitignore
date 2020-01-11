@@ -1,0 +1,9 @@
+dist
+deploy
+node_modules
+*.pyc
+*-shm
+*-wal
+notifind_db.sqlite3
+!tests/scripts/notifind_db.sqlite3
+test_create_notifind_db.sqlite3
