@@ -1,5 +1,7 @@
 # notifind
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/399ae381593d47bcbc6f5fdea097c67c)](https://www.codacy.com/manual/igara/notifind?utm_source=github.com&utm_medium=referral&utm_content=igara/notifind&utm_campaign=Badge_Grade)
+
 ## To Use
 
 ```bash
