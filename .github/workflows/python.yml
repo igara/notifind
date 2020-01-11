@@ -15,7 +15,7 @@ jobs:
       - name: brew cache
         uses: actions/cache@v1
         with:
-          path: ${{ steps.brew-cache.outputs.dir }}
+          path: ~/Library/Caches/Homebrew/downloads
           key: ${{ runner.os }}-${{ hashFiles('Brewfile') }}
       - name: pip cache
         uses: actions/cache@v1
