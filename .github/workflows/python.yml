@@ -7,5 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: brew install pipenv
+      - run: sudo easy_install pip
       - run: pipenv run test_install
       - run: pipenv run test
