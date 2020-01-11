@@ -50,7 +50,7 @@ def insert_records(notification_center_db_cursor, notifind_db_cursor, notifind_d
     uuid = row[1]
     data = row[2]
 
-    plist, fmt, err = \
+    plist, _fmt, err = \
       Foundation.NSPropertyListSerialization.propertyListFromData_mutabilityOption_format_errorDescription_(
       buffer(data),
       Foundation.NSPropertyListMutableContainers,
