@@ -7,6 +7,7 @@ class NGramTest(unittest.TestCase):
   def test_call(self):
     self.assertEqual(n_gram.call('abcdefg', 1), 'a b c d e f g')
     self.assertEqual(n_gram.call('abcdefg', 2), 'ab bc cd de ef fg')
+    self.assertEqual(n_gram.call('', 1), '')
 
 if __name__ == '__main__':
   unittest.main()
