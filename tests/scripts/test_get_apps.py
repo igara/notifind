@@ -36,7 +36,7 @@ class GetAppsTest(unittest.TestCase):
       apps = get_apps.get_apps_json("")
       self.assertEqual(apps[0]["id"], 2)
       self.assertEqual(apps[0]["identifier"], "com.tinyspeck.slackmacgap")
-      self.assertEqual(apps[0]["notification_count"], 15)
+      self.assertEqual(apps[0]["notification_count"], 9)
 
 if __name__ == '__main__':
   unittest.main()
