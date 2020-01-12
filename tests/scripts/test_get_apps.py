@@ -34,7 +34,7 @@ class GetAppsTest(unittest.TestCase):
       mock_notifind_db_connect.return_value = notifind_db_connection
 
       apps = get_apps.get_apps_json("")
-      self.assertEqual(apps[0]["id"], 3)
+      self.assertEqual(apps[0]["id"], 2)
       self.assertEqual(apps[0]["identifier"], "com.tinyspeck.slackmacgap")
       self.assertEqual(apps[0]["notification_count"], 15)
 
