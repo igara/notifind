@@ -12,5 +12,5 @@ export const AppList = () => {
     return <AppView key={app.id} app={app} />;
   });
 
-  return <View style={styles.wrapperViewStyle}>{appListElement}</View>;
+  return <View style={styles.wrapperView}>{appListElement}</View>;
 };

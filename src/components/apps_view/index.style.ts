@@ -1,6 +1,6 @@
 import { css } from "styled-components";
 
-export const wrapperViewStyle = css`
+export const wrapperView = css`
   flex-direction: column;
 `.toString();
 

@@ -8,13 +8,24 @@ def get_notifications_json(search_app_id, search_title, search_sub_title, search
   connection = notifind_db.connect()
   cursor = connection.cursor()
 
-  n_gram_search_title = n_gram.call(search_title, 1)
-  n_gram_search_sub_title = n_gram.call(search_sub_title, 1)
-  n_gram_search_body = n_gram.call(search_body, 1)
+  n_gram_search_title = n_gram.call(search_title, 2)
+  n_gram_search_sub_title = n_gram.call(search_sub_title, 2)
+  n_gram_search_body = n_gram.call(search_body, 2)
 
-  where_record_fts_title = "AND THEN record_fts.title MATCH '{}',".format(n_gram_search_title) if n_gram_search_title != '' else ''
-  where_record_fts_sub_title = "AND THEN record_fts.sub_title MATCH '{}',".format(n_gram_search_sub_title) if n_gram_search_sub_title != '' else ''
-  where_record_fts_body = "AND THEN record_fts.body MATCH '{}'".format(n_gram_search_body) if n_gram_search_body != '' else ''
+  where_record_fts_list = []
+  if n_gram_search_title != '':
+    where_record_fts_title = "title:{}".format(n_gram_search_title)
+    where_record_fts_list.append(where_record_fts_title)
+  if n_gram_search_sub_title != '':
+    where_record_fts_sub_title = "sub_title:{}".format(n_gram_search_sub_title)
+    where_record_fts_list.append(where_record_fts_sub_title)
+  if n_gram_search_body != '':
+    where_record_fts_body = "body:{}".format(n_gram_search_body)
+    where_record_fts_list.append(where_record_fts_body)
+
+  where_record_fts = ''
+  if len(where_record_fts_list) > 0:
+    where_record_fts = "AND record_fts MATCH '" + " AND ".join(where_record_fts_list) + "'"
 
   notifications = cursor.execute(
     """
@@ -29,10 +40,8 @@ def get_notifications_json(search_app_id, search_title, search_sub_title, search
       ON record.id = record_fts.rowid
       WHERE record.app_id = ?
         {}
-        {}
-        {}
       ORDER BY date DESC;
-    """.format(where_record_fts_title, where_record_fts_sub_title, where_record_fts_body),
+    """.format(where_record_fts),
     [
       search_app_id,
     ]

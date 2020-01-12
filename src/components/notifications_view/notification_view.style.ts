@@ -1,34 +1,31 @@
 import { css } from "styled-components";
 
-export const wrapperView = css`
-  flex-direction: column;
-`.toString();
-
 export const tableRowView = css`
   flex: 1;
   flex-direction: row;
 `.toString();
 
-export const tableTitleView = css`
+export const tableTitleText = css`
   width: 150px;
   padding: 2px;
 `.toString();
 
-export const tableSubTitleView = css`
+export const tableSubTitleText = css`
   width: 150px;
   padding: 2px;
 `.toString();
 
-export const tableBodyView = css`
+export const tableBodyText = css`
   width: 250px;
   padding: 2px;
 `.toString();
 
-export const tableDateView = css`
+export const tablePresentedText = css`
   width: 150px;
   padding: 2px;
 `.toString();
 
-export const notificationListScrollArea = css`
-  height: 400px;
+export const tableDateText = css`
+  width: 150px;
+  padding: 2px;
 `.toString();

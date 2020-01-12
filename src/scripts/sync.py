@@ -111,9 +111,9 @@ def insert_records(notification_center_db_cursor, notifind_db_cursor, notifind_d
         VALUES (?, ?, ?);
         """,
         [
-          n_gram.call(record_dic['title'], 1),
-          n_gram.call(record_dic['sub_title'], 1),
-          n_gram.call(record_dic['body'], 1)
+          n_gram.call(record_dic['title'], 2),
+          n_gram.call(record_dic['sub_title'], 2),
+          n_gram.call(record_dic['body'], 2)
         ]
       )
 

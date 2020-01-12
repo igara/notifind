@@ -7,10 +7,16 @@ type StoresContextProps = {
   setSearchIdentifierState: (searchIdentifier: string) => void;
   appsState: Apps;
   setAppsState: (apps: Apps) => void;
-  selectedAppIDState: number | null;
-  setSelectedAppIDState: (appID: number | null) => void;
+  selectedAppIDState: number;
+  setSelectedAppIDState: (appID: number) => void;
   notificationsState: Notifications;
   setNotificationsState: (notifications: Notifications) => void;
+  searchTitleState: string;
+  setSearchTitleState: (searchTitle: string) => void;
+  searchSubTitleState: string;
+  setSearchSubTitleState: (searchSubTitle: string) => void;
+  searchBodyState: string;
+  setSearchBodyState: (searchBody: string) => void;
 };
 
 export const StoresContext = React.createContext({} as StoresContextProps);
@@ -22,12 +28,13 @@ type Props = {
 export const Stores = (props: Props) => {
   const [searchIdentifierState, setSearchIdentifierState] = React.useState("");
   const [appsState, setAppsState] = React.useState<Apps>([]);
-  const [selectedAppIDState, setSelectedAppIDState] = React.useState<
-    number | null
-  >(null);
+  const [selectedAppIDState, setSelectedAppIDState] = React.useState<number>(0);
   const [notificationsState, setNotificationsState] = React.useState<
     Notifications
   >([]);
+  const [searchTitleState, setSearchTitleState] = React.useState("");
+  const [searchSubTitleState, setSearchSubTitleState] = React.useState("");
+  const [searchBodyState, setSearchBodyState] = React.useState("");
 
   return (
     <StoresContext.Provider
@@ -39,7 +46,13 @@ export const Stores = (props: Props) => {
         selectedAppIDState,
         setSelectedAppIDState,
         notificationsState,
-        setNotificationsState
+        setNotificationsState,
+        searchTitleState,
+        setSearchTitleState,
+        searchSubTitleState,
+        setSearchSubTitleState,
+        searchBodyState,
+        setSearchBodyState
       }}
     >
       {props.children}

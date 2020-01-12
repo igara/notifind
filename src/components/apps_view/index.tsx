@@ -15,7 +15,9 @@ import { AppList } from "./app_list";
 export const AppsView = () => {
   const storesContext = React.useContext(StoresContext);
 
-  const searchLineEditEventHandler = useEventHandler<QLineEditSignals>(
+  const searchIdentifierLineEditEventHandler = useEventHandler<
+    QLineEditSignals
+  >(
     {
       textChanged: (searchIdentifier: string) => {
         storesContext.setSearchIdentifierState(searchIdentifier);
@@ -29,11 +31,10 @@ export const AppsView = () => {
   );
 
   return (
-    <View style={styles.wrapperViewStyle}>
+    <View style={styles.wrapperView}>
       <LineEdit
         placeholderText="対象のアプリケーション"
-        on={searchLineEditEventHandler}
-        text={storesContext.searchIdentifierState}
+        on={searchIdentifierLineEditEventHandler}
       />
       <Text wordWrap={true}>
         入力しないでEnterを押した時は通知を許可した全アプリケーションの表示が行われます

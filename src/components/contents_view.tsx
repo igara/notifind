@@ -13,9 +13,11 @@ export const ContentsView = () => {
   React.useEffect(() => {
     setTimeout(() => {
       sync();
+    }, 10000);
+    setTimeout(() => {
       const apps = getApps(storesContext.searchIdentifierState);
       storesContext.setAppsState(apps);
-    }, 10000);
+    }, 5000);
   }, [storesContext.appsState]);
 
   return (
