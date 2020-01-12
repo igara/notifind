@@ -33,7 +33,7 @@ export const getNotifications = (
   searchBody: string
 ): Notifications => {
   const jsonString = execSync(
-    `(cd ${distPath} && PYTHONIOENCODING=utf-8 /usr/bin/python -c "import get_notifications; get_notifications.call('${searchAppID}, ${searchTitle}, ${searchSubTitle}, ${searchBody}')")`
+    `(cd ${distPath} && PYTHONIOENCODING=utf-8 /usr/bin/python -c "import get_notifications; get_notifications.call('${searchAppID}', '${searchTitle}', '${searchSubTitle}', '${searchBody}')")`
   ).toString();
 
   return JSON.parse(jsonString).map((json: NotificationJSON) => {

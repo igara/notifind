@@ -26,6 +26,7 @@ def create():
     'app': '',
     'record': '',
     'record_app_id_index_1': '',
+    'record_fts': '',
   }
 
   create_execute(
@@ -68,6 +69,19 @@ def create():
     );
     """,
     'record_app_id_index_1',
+    message_dic
+  )
+
+  create_execute(
+    notifind_db_cursor,
+    """
+    CREATE VIRTUAL TABLE record_fts USING fts4(
+      title,
+      sub_title,
+      body
+    );
+    """,
+    'record_fts',
     message_dic
   )
 

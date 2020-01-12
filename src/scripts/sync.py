@@ -5,6 +5,7 @@ import notifind_db
 import notification_center_db
 import Foundation
 import codecs
+import n_gram
 
 def parse_req(req):
   res = {}
@@ -75,7 +76,7 @@ def insert_records(notification_center_db_cursor, notifind_db_cursor, notifind_d
     if 'date' not in record_dic:
       record_dic['date'] = '0000-01-01 00:00:00 +0000'
 
-    notifind_db_cursor.execute(
+    insert_record_result = notifind_db_cursor.execute(
       """
       INSERT OR IGNORE INTO record
       (
@@ -97,6 +98,25 @@ def insert_records(notification_center_db_cursor, notifind_db_cursor, notifind_d
         record_dic['body']
       ]
     )
+
+    if insert_record_result.rowcount > 0:
+      notifind_db_cursor.execute(
+        """
+        INSERT OR IGNORE INTO record_fts
+        (
+          title,
+          sub_title,
+          body
+        )
+        VALUES (?, ?, ?);
+        """,
+        [
+          n_gram.call(record_dic['title'], 1),
+          n_gram.call(record_dic['sub_title'], 1),
+          n_gram.call(record_dic['body'], 1)
+        ]
+      )
+
     notifind_db_connection.commit()
 
 def call():
