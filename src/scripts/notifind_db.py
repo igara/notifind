@@ -7,6 +7,7 @@ import json
 def connect():
   notifind_db_path = os.path.realpath('./notifind_db.sqlite3')
   connection = sqlite3.connect(notifind_db_path)
+  connection.text_factory = str
   connection.row_factory = sqlite3.Row
   return connection
 
