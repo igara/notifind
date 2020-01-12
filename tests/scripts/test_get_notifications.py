@@ -26,9 +26,9 @@ class GetNotificationsTest(unittest.TestCase):
       notification = get_notifications.get_notifications_json(1, "", "", "")
       self.assertEqual(len(notification), 1)
       self.assertEqual(notification[0]["id"], 1)
-      self.assertEqual(notification[0]["body"], u'\u26d4\ufe0f 5 of 21 tests failed')
+      self.assertEqual(notification[0]["body"], '\xe2\x9b\x94\xef\xb8\x8f 5 of 21 tests failed')
       self.assertEqual(notification[0]["date"], '2019-12-14 16:35:58 +0000')
-      self.assertEqual(notification[0]["title"], u'/users/igarashishou/workspace/syonet/syonet_seven/nodejs/www - 24% failed')
+      self.assertEqual(notification[0]["title"], '/users/igarashishou/workspace/syonet/syonet_seven/nodejs/www - 24% failed')
 
 if __name__ == '__main__':
   unittest.main()
