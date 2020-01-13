@@ -38,8 +38,15 @@ module.exports = (env, argv) => {
           ]
         },
         {
-          test: /\.node/i,
-          use: [{ loader: "node-loader" }, { loader: "file-loader" }]
+          test: /\.node$/,
+          use: [
+            {
+              loader: "native-addon-loader",
+              options: {
+                name: "[name]-[hash].[ext]"
+              }
+            }
+          ]
         }
       ]
     },
